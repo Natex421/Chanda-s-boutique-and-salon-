@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chanda's Classic Boutique &amp; Salon | Lusaka, Zambia</title>
+<meta name="description" content="Chanda's Classic Boutique &amp; Salon in Zambia — elegant hair styling, braids, weaves, makeup, nails, bridal packages and a curated boutique of dresses and accessories. Classic Style. Timeless Beauty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Chanda's Classic Boutique & Salon",
+  "telephone": "+260975650086",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lusaka",
+    "addressLocality": "Lusaka",
+    "addressRegion": "Lusaka Province",
+    "addressCountry": "ZM"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:00", "closes": "16:00" }
+  ],
+  "sameAs": []
+}
+</script>
+<style>
+  :root{
+    --burgundy:#6B1F2A;
+    --burgundy-dark:#4A141C;
+    --gold:#C9A961;
+    --gold-light:#E6D3A3;
+    --ivory:#FAF6F0;
+    --blush:#F4D9D0;
+    --charcoal:#2B2B2B;
+    --muted:#6B6B6B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;color:var(--charcoal);background:var(--ivory);overflow-x:hidden}
+  @media (pointer:fine){ body{cursor:none} }
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+    .particle{display:none!important}
+  }
+
+  /* custom cursor */
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%}
+  .cursor-dot{width:8px;height:8px;background:var(--gold)}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--gold);transition:width .25s,height .25s,background .25s}
+  .cursor-ring.hover{width:62px;height:62px;background:rgba(201,169,97,.18)}
+  @media (pointer:coarse){ .cursor-dot,.cursor-ring{display:none} }
+
+  /* intro */
+  .intro{position:fixed;inset:0;z-index:10001;background:var(--burgundy-dark);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .9s ease,transform .9s ease}
+  .intro.hide{opacity:0;pointer-events:none;transform:scale(1.06)}
+  .intro-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:clamp(2.2rem,7vw,4.5rem);letter-spacing:.18em;opacity:0;transform:translateY(24px);transition:opacity 1.1s ease,transform 1.1s ease}
+  .intro.show .intro-logo{opacity:1;transform:translateY(0)}
+  .intro-sub{color:var(--gold-light);letter-spacing:.35em;font-size:.8rem;margin-top:1.2rem;opacity:0;transition:opacity 1.1s .4s ease}
+  .intro.show .intro-sub{opacity:.8}
+  .curtain{position:fixed;inset:0;z-index:10000;pointer-events:none;display:flex}
+  .curtain .panel{flex:1;background:var(--burgundy-dark);transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
+  .curtain.wipe .panel.left{transform:translateX(-100%)}
+  .curtain.wipe .panel.right{transform:translateX(100%)}
+
+  /* navbar */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .4s,box-shadow .4s,padding .4s;padding:1.25rem 0}
+  .nav.solid{background:rgba(250,246,240,.96);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.08);padding:.7rem 0}
+  .nav a{color:var(--ivory);transition:color .3s}
+  .nav.solid a{color:var(--charcoal)}
+  .nav .brand{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600}
+  .nav .brand svg{vertical-align:middle}
+
+  /* hero */
+  .hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ivory)}
+  .hero-bg{position:absolute;inset:-8%;background-size:cover;background-position:center;animation:zoom 22s ease-in-out infinite alternate}
+  @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.14)}}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,20,28,.5),rgba(74,20,28,.78))}
+  .hero-content{position:relative;z-index:2;padding:2rem;max-width:900px}
+  .brand-letters span{display:inline-block;opacity:0;transform:translateY(50px)}
+  .brand-letters.animate span{animation:letterIn .7s forwards}
+  @keyframes letterIn{to{opacity:1;transform:translateY(0)}}
+  .shimmer{background:linear-gradient(90deg,var(--gold),#fff,var(--gold));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3.2s linear infinite}
+  .tagline{opacity:0}
+  .tagline.animate{animation:fadeUp 1s .9s forwards}
+  .hero-btns{opacity:0}
+  .hero-btns.animate{animation:fadeUp 1s 1.3s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  .particle{position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:.6;animation:floatUp linear infinite;pointer-events:none}
+  @keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:0}12%{opacity:.75}88%{opacity:.35}100%{transform:translateY(-100vh) scale(.4);opacity:0}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .85s ease,transform .85s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-70px);transition:opacity .95s ease,transform .95s ease}
+  .reveal-left.in{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(70px);transition:opacity .95s ease,transform .95s ease}
+  .reveal-right.in{opacity:1;transform:translateX(0)}
+
+  /* about */
+  .about-img{position:relative;overflow:hidden;border-radius:1.25rem;background:var(--blush)}
+  .about-img img{transition:transform .7s ease;width:100%;height:520px;object-fit:cover;display:block}
+  .about-img:hover img{transform:scale(1.06)}
+  .line{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .line.in{opacity:1;transform:translateY(0)}
+
+  /* services */
+  .service-card{transition:transform .4s ease,box-shadow .4s ease;position:relative;overflow:hidden;background:#fff;border-radius:1.25rem}
+  .service-card:hover{transform:translateY(-10px);box-shadow:0 22px 44px rgba(201,169,97,.28)}
+  .service-card::after{content:'';position:absolute;inset:0;border:1px solid transparent;transition:border-color .4s;pointer-events:none;border-radius:inherit}
+  .service-card:hover::after{border-color:var(--gold)}
+  .icon-glow{filter:drop-shadow(0 0 0 transparent);transition:filter .4s}
+  .service-card:hover .icon-glow{filter:drop-shadow(0 0 10px var(--gold))}
+
+  /* boutique */
+  .boutique-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1rem 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .boutique-track::-webkit-scrollbar{display:none}
+  .boutique-card{flex:0 0 290px;scroll-snap-align:start;position:relative;overflow:hidden;border-radius:1.25rem;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .boutique-card img{transition:transform .6s ease;width:100%;height:360px;object-fit:cover;display:block}
+  .boutique-card:hover img{transform:scale(1.12)}
+  .boutique-card .info{padding:1rem 1.25rem}
+
+  /* before/after */
+  .ba-container{position:relative;width:100%;max-width:760px;aspect-ratio:4/3;overflow:hidden;border-radius:1.25rem;cursor:ew-resize;user-select:none;background:var(--blush);margin:0 auto}
+  .ba-container img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .ba-before{clip-path:inset(0 50% 0 0)}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:var(--gold);transform:translateX(-50%);pointer-events:none}
+  .ba-handle::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .ba-handle::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--burgundy-dark);font-weight:700;font-size:1.1rem}
+  .ba-label{position:absolute;bottom:12px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:.75rem;letter-spacing:.1em}
+
+  /* testimonials */
+  .testi-wrap{position:relative;min-height:240px}
+  .testi{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .testi.active{opacity:1;pointer-events:auto}
+  .testi-dots{display:flex;justify-content:center;gap:8px;margin-top:1.5rem}
+  .testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(107,31,42,.25);transition:background .3s,transform .3s;cursor:pointer}
+  .testi-dot.active{background:var(--gold);transform:scale(1.3)}
+
+  /* packages */
+  .pkg-card{transition:transform .4s ease,box-shadow .4s ease;background:#fff;border-radius:1.25rem;padding:2.25rem 1.75rem;text-align:center;position:relative}
+  .pkg-card.highlight{transform:scale(1.05);border:2px solid var(--gold);box-shadow:0 24px 56px rgba(201,169,97,.32)}
+  .pkg-card:hover{transform:translateY(-8px) scale(1.02)}
+  .pkg-card.highlight:hover{transform:scale(1.07)}
+  .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--burgundy-dark);font-size:.72rem;font-weight:600;letter-spacing:.12em;padding:6px 16px;border-radius:999px}
+
+  /* form */
+  .input{width:100%;padding:.9rem 1.1rem;border:1px solid #ddd;border-radius:.7rem;background:#fff;font-family:inherit;transition:border .3s,box-shadow .3s;font-size:1rem}
+  .input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,97,.18)}
+
+  /* map */
+  .map-wrap{border-radius:1.25rem;overflow:hidden;aspect-ratio:16/9;background:var(--blush)}
+  .map-wrap iframe{width:100%;height:100%;border:0}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:999px;font-weight:500;transition:all .3s ease;font-size:.95rem}
+  .btn-gold{background:var(--gold);color:var(--burgundy-dark)}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,169,97,.4)}
+  .btn-outline{border:1.5px solid var(--ivory);color:var(--ivory)}
+  .btn-outline:hover{background:var(--ivory);color:var(--burgundy-dark)}
+
+  /* floating buttons */
+  .float-btns{position:fixed;bottom:1.25rem;right:1.25rem;z-index:900;display:flex;flex-direction:column;gap:.75rem}
+  @media (min-width:768px){ .float-btns{display:none} }
+  .float-btn{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.28);color:#fff;transition:transform .3s}
+  .float-btn:hover{transform:scale(1.08)}
+  .float-call{background:var(--burgundy)}
+  .float-wa{background:#25D366}
+
+  /* footer */
+  footer{background:var(--burgundy-dark);color:var(--ivory)}
+
+  /* section spacing */
+  section{padding:5rem 1rem}
+  @media (min-width:768px){ section{padding:6rem 2.5rem} }
+
+  /* stagger */
+  .stagger > *{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
+  .stagger.in > *{opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(1){transition-delay:.05s}
+  .stagger.in > *:nth-child(2){transition-delay:.12s}
+  .stagger.in > *:nth-child(3){transition-delay:.19s}
+  .stagger.in > *:nth-child(4){transition-delay:.26s}
+  .stagger.in > *:nth-child(5){transition-delay:.33s}
+  .stagger.in > *:nth-child(6){transition-delay:.40s}
+  .stagger.in > *:nth-child(7){transition-delay:.47s}
+  .stagger.in > *:nth-child(8){transition-delay:.54s}
+
+  /* parallax */
+  .parallax{will-change:transform}
+
+  /* mobile menu */
+  #mobileMenu a{color:var(--charcoal)}
+
+  /* utility */
+  .text-gold{color:var(--gold)}
+  .bg-blush{background:var(--blush)}
+</style>
+</head>
+<body>
+
+<!-- Intro overlay -->
+<div class="intro" id="intro">
+  <div class="intro-logo">Chanda's</div>
+  <div class="intro-sub">CLASSIC BOUTIQUE &amp; SALON</div>
+</div>
+<div class="curtain" id="curtain"><div class="panel left"></div><div class="panel right"></div></div>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Navbar -->
+<nav class="nav" id="nav">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <a href="#home" class="brand flex items-center gap-2">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2 L24 13 L13 24 L2 13 Z" stroke="#C9A961" stroke-width="1.5" fill="none"/><circle cx="13" cy="13" r="3" fill="#C9A961"/></svg>
+      Chanda's
+    </a>
+    <div class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#results">Results</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="https://wa.me/260975650086" class="hidden md:inline-flex btn btn-gold text-sm py-2 px-5">Book Now</a>
+    <button id="menuBtn" class="md:hidden text-2xl text-ivory" aria-label="Toggle menu" style="color:var(--ivory)">☰</button>
+  </div>
+  <div id="mobileMenu" class="hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#boutique">Boutique</a>
+    <a href="#results">Results</a>
+    <a href="#packages">Packages</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="hero-bg" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221920%22 height=%221080%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%22 stop-color=%22%236B1F2A%22/><stop offset=%221%22 stop-color=%22%234A141C%22/></linearGradient></defs><rect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/><circle cx=%22960%22 cy=%22540%22 r=%22120%22 fill=%22none%22 stroke=%22%23C9A961%22 stroke-width=%222%22 opacity=%220.4%22/></svg>')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="text-xs md:text-sm tracking-[.45em] mb-5 opacity-90">ZAMBIA'S CLASSIC LUXURY</p>
+    <h1 class="serif text-5xl md:text-7xl lg:text-8xl mb-5 leading-tight">
+      <span class="brand-letters" id="brandLetters"></span>
+    </h1>
+    <p class="tagline text-xl md:text-2xl font-light mb-9">Classic Style. Timeless Beauty.</p>
+    <div class="hero-btns flex gap-4 justify-center flex-wrap">
+      <a href="#contact" class="btn btn-gold">Book Now</a>
+      <a href="tel:0975650086" class="btn btn-outline">Call 0975650086</a>
+    </div>
+  </div>
+  <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="about-img reveal-left parallax">
+      <img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22900%22 height=%22520%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23F4D9D0%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2234%22 fill=%22%236B1F2A%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Salon Image Placeholder</text></svg>" alt="Chanda's salon interior" loading="lazy">
+    </div>
+    <div class="reveal-right">
+      <p class="text-xs tracking-[.35em] text-gold mb-3">OUR STORY</p>
+      <h2 class="serif text-4xl md:text-5xl mb-6 leading-tight">A Touch of Classic, A Heart of Africa</h2>
+      <div id="aboutLines" class="space-y-4 text-base md:text-lg leading-relaxed" style="color:var(--muted)"></div>
+      <a href="#services" class="btn btn-gold mt-8">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="background:rgba(255,255,255,.55)">
+  <div class="max-w-7xl mx-auto text-center mb-14">
+    <p class="text-xs tracking-[.35em] text-gold mb-3">WHAT WE DO</p>
+    <h2 class="serif text-4xl md:text-5xl">Salon Services</h2>
+  </div>
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger" id="servicesGrid"></div>
+</section>
+
+<!-- Boutique -->
+<section id="boutique">
+  <div class="max-w-7xl mx-auto mb-8 flex items-end justify-between flex-wrap gap-4">
+    <div>
+      <p class="text-xs tracking-[.35em] text-gold mb-3">THE BOUTIQUE</p>
+      <h2 class="serif text-4xl md:text-5xl">Curated Pieces</h2>
+    </div>
+    <p class="text-sm text-muted hidden md:block">Drag or scroll to explore →</p>
+  </div>
+  <div class="max-w-7xl mx-auto">
+    <div class="boutique-track" id="boutiqueTrack"></div>
+  </div>
+</section>
+
+<!-- Before / After -->
+<section id="results" style="background:rgba(255,255,255,.55)">
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <p class="text-xs tracking-[.35em] text-gold mb-3">TRANSFORMATIONS</p>
+    <h2 class="serif text-4xl md:text-5xl">Before &amp; After</h2>
+    <p class="text-muted mt-4 max-w-xl mx-auto">Drag the slider to reveal the transformation.</p>
+  </div>
+  <div class="ba-container" id="baContainer">
+    <img class="ba-after" src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22900%22 height=%22675%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23E6D3A3%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2248%22 fill=%22%234A141C%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>AFTER</text></svg>" alt="After styling" loading="lazy">
+    <img class="ba-before" src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22900%22 height=%22675%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23F4D9D0%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2248%22 fill=%22%234A141C%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>BEFORE</text></svg>" alt="Before styling" loading="lazy">
+    <div class="ba-handle"></div>
+    <span class="ba-label" style="left:12px">BEFORE</span>
+    <span class="ba-label" style="right:12px">AFTER</span>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-xs tracking-[.35em] text-gold mb-3">LOVED BY MANY</p>
+    <h2 class="serif text-4xl md:text-5xl mb-12">What Our Clients Say</h2>
+    <div class="testi-wrap" id="testiWrap"></div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages" style="background:rgba(255,255,255,.55)">
+  <div class="max-w-7xl mx-auto text-center mb-14">
+    <p class="text-xs tracking-[.35em] text-gold mb-3">PACKAGES</p>
+    <h2 class="serif text-4xl md:text-5xl">Choose Your Experience</h2>
+  </div>
+  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8" id="packagesGrid"></div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-16">
+    <div class="reveal-left">
+      <p class="text-xs tracking-[.35em] text-gold mb-3">GET IN TOUCH</p>
+      <h2 class="serif text-4xl md:text-5xl mb-6">Book Your Appointment</h2>
+      <p class="text-muted mb-7">Send us your details and we'll confirm your booking via WhatsApp.</p>
+      <div class="space-y-3 text-sm">
+        <p><strong>Phone:</strong> <a href="tel:0975650086" class="text-gold">0975650086</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/260975650086" class="text-gold">+260 975 650 086</a></p>
+        <p><strong>Hours:</strong> Mon–Sat 8am–6pm · Sun 9am–4pm</p>
+        <p><strong>Location:</strong> Lusaka, Zambia</p>
+      </div>
+      <div class="map-wrap mt-8">
+        <iframe src="https://www.google.com/maps?q=Lusaka,Zambia&output=embed" loading="lazy" title="Map of Lusaka, Zambia" allowfullscreen></iframe>
+      </div>
+    </div>
+    <form id="bookingForm" class="space-y-4 reveal-right">
+      <input class="input" name="name" placeholder="Your Name" required>
+      <select class="input" name="service" required>
+        <option value="">Select a service</option>
+      </select>
+      <input class="input" type="date" name="date" required>
+      <textarea class="input" name="message" rows="4" placeholder="Message (optional)"></textarea>
+      <button type="submit" class="btn btn-gold w-full">Send via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-14">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+    <div>
+      <div class="serif text-2xl text-gold mb-3 flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2 L24 13 L13 24 L2 13 Z" stroke="#C9A961" stroke-width="1.5" fill="none"/><circle cx="13" cy="13" r="3" fill="#C9A961"/></svg>
+        Chanda's
+      </div>
+      <p class="text-sm opacity-70 leading-relaxed">Classic Style. Timeless Beauty.<br>Elegant boutique &amp; salon in Zambia.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4 text-gold">Quick Links</h4>
+      <ul class="space-y-2 text-sm opacity-80">
+        <li><a href="#about" class="hover:text-gold">About</a></li>
+        <li><a href="#services" class="hover:text-gold">Services</a></li>
+        <li><a href="#boutique" class="hover:text-gold">Boutique</a></li>
+        <li><a href="#results" class="hover:text-gold">Results</a></li>
+        <li><a href="#packages" class="hover:text-gold">Packages</a></li>
+        <li><a href="#contact" class="hover:text-gold">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4 text-gold">Follow Us</h4>
+      <div class="flex gap-4">
+        <a href="#" aria-label="Facebook" class="opacity-80 hover:opacity-100 hover:text-gold">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.8l-.4 3h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="opacity-80 hover:opacity-100 hover:text-gold">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="opacity-80 hover:opacity-100 hover:text-gold">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.5a5.4 5.4 0 0 1-3.2-1.1 5.4 5.4 0 0 1-2.1-3.4h-3v13.2a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .9.1V9.8a5.4 5.4 0 1 0 4.5 5.3V8.7a8.4 8.4 0 0 0 5.3 1.9V7.7a5.4 5.4 0 0 1-2.1-.1z"/></svg>
+        </a>
+      </div>
+      <p class="text-sm opacity-70 mt-6">Phone: 0975650086<br>WhatsApp: +260 975 650 086</p>
+    </div>
+  </div>
+  <div class="text-center text-xs opacity-50 mt-10 px-6">© 2026 Chanda's Classic Boutique &amp; Salon. All rights reserved.</div>
+</footer>
+
+<!-- Floating mobile buttons -->
+<div class="float-btns">
+  <a href="tel:0975650086" class="float-btn float-call" aria-label="Call now">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+  </a>
+  <a href="https://wa.me/260975650086" class="float-btn float-wa" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-1-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+  </a>
+</div>
+
+<script>
+/* ============================================================
+   EDITABLE CONTENT & CONFIG
+   Grouped here so text and image URLs are easy to change.
+   ============================================================ */
+const CONFIG = {
+  brand: "Chanda's Classic Boutique & Salon",
+  tagline: "Classic Style. Timeless Beauty.",
+  phone: "0975650086",
+  whatsapp: "260975650086",
+  location: "Lusaka, Zambia",
+  hours: "Mon–Sat 8am–6pm · Sun 9am–4pm",
+
+  // About paragraph lines (reveal line by line)
+  aboutLines: [
+    "Chanda's Classic Boutique & Salon was born from a love of timeless elegance and the vibrant spirit of Zambia.",
+    "We believe every woman deserves to feel confident, beautiful, and celebrated — whether she's stepping into a boardroom, a wedding aisle, or a weekend brunch.",
+    "Our stylists and designers blend classic techniques with modern trends, offering premium hair, beauty, and fashion under one roof.",
+    "From intricate braids to bespoke bridal packages and a curated boutique of dresses and accessories — welcome to your new favourite destination."
+  ],
+
+  // Salon services
+  services: [
+    { title: "Hair Styling", desc: "Cuts, blow-dries, and signature styles tailored to you.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M6 3v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V3"/><path d="M12 12v9"/><path d="M18 3v6a3 3 0 0 0-3 3h0"/></svg>' },
+    { title: "Braids", desc: "Box braids, knotless, cornrows and more, done with care.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M8 3c0 4-2 6-2 9s2 5 2 9"/><path d="M12 3c0 4 2 6 2 9s-2 5-2 9"/><path d="M16 3c0 4-2 6-2 9s2 5 2 9"/></svg>' },
+    { title: "Weaves & Wigs", desc: "Premium installs, custom units and flawless blending.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M4 8c0-3 4-5 8-5s8 2 8 5v8c0 3-4 5-8 5s-8-2-8-5z"/><path d="M8 8h8"/></svg>' },
+    { title: "Relaxers", desc: "Smooth, healthy, long-lasting relaxer treatments.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 8h10"/></svg>' },
+    { title: "Treatments", desc: "Deep conditioning, protein and scalp therapies.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>' },
+    { title: "Makeup", desc: "Everyday glam to full bridal glam and photoshoots.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M4 20l4-4"/><rect x="8" y="6" width="12" height="6" rx="3" transform="rotate(45 14 9)"/></svg>' },
+    { title: "Nails", desc: "Manicures, pedicures, gel and nail art.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><path d="M8 4h8v4a4 4 0 0 1-8 0z"/><path d="M6 12h12v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg>' },
+    { title: "Bridal Packages", desc: "Complete bride prep — hair, makeup and styling.", icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="1.8"><circle cx="12" cy="9" r="5"/><path d="M7 14l-2 7 7-3 7 3-2-7"/></svg>' }
+  ],
+
+  // Boutique gallery items
+  boutique: [
+    { name: "Silk Evening Dress", price: "From K1,200", img: "data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23F4D9D0%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2228%22 fill=%22%236B1F2A%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Silk Evening Dress</text></svg>" },
+    { name: "Floral Midi Dress", price: "From K850", img: "data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23F7E6E1%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2228%22 fill=%22%236B1F2A%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Floral Midi Dress</text></svg>" },
+    { name: "Classic Blazer Set", price: "From K1,500", img: "data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23E6D3A3%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2228%22 fill=%22%234A141C%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Classic Blazer Set</text></svg>" },
+    { name: "Strappy Heels", price: "From K650", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" },
+    { name: "Gold Statement Earrings", price: "From K280", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
+    { name: "Champagne Clutch", price: "From K420", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
+    { name: "Ankara Print Gown", price: "From K1,800", img: "data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23F4D9D0%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2228%22 fill=%22%236B1F2A%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Ankara Print Gown</text></svg>" },
+    { name: "Pearl Necklace Set", price: "From K350", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" }
+  ],
+
+  // Testimonials
+  testimonials: [
+    { name: "Grace M.", role: "Bride, Lusaka", text: "Chanda made me feel like a queen on my wedding day. My hair and makeup were flawless and lasted all night." },
+    { name: "Thandiwe K.", role: "Regular Client", text: "The best salon in Lusaka. The braids are neat, the service is warm, and the boutique has stunning pieces." },
+    { name: "Natasha B.", role: "Boutique Customer", text: "I found the perfect dress for a gala here. Quality fabrics and such a welcoming atmosphere." },
+    { name: "Chipo L.", role: "Bridal Client", text: "Professional, punctual and talented. The bridal package was worth every kwacha." }
+  ],
+
+  // Packages
+  packages: [
+    { name: "Glow", price: "K450", features: ["Hair styling", "Basic makeup", "Manicure"], highlight: false },
+    { name: "Bridal", price: "K2,500", features: ["Bridal hair & makeup", "Trial session", "Bridesmaid styling", "Touch-up kit"], highlight: true },
+    { name: "Royal", price: "K1,200", features: ["Weave install", "Full glam makeup", "Pedicure", "Boutique discount"], highlight: false }
+  ]
+};
+
+/* ============================================================
+   APPLICATION LOGIC
+   ============================================================ */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// --- Intro + curtain wipe ---
+const intro = document.getElementById('intro');
+const curtain = document.getElementById('curtain');
+setTimeout(() => intro.classList.add('show'), 150);
+setTimeout(() => intro.classList.add('hide'), 1900);
+setTimeout(() => curtain.classList.add('wipe'), 2100);
+setTimeout(() => { curtain.style.display = 'none'; intro.style.display = 'none'; triggerHero(); }, 3300);
+
+// --- Hero letter-by-letter brand name ---
+const brandName = "Chanda's Classic";
+const brandLettersEl = document.getElementById('brandLetters');
+brandName.split('').forEach((ch, i) => {
+  const span = document.createElement('span');
+  span.textContent = ch === ' ' ? '\u00A0' : ch;
+  span.style.animationDelay = (i * 0.07) + 's';
+  span.classList.add('shimmer');
+  brandLettersEl.appendChild(span);
+});
+function triggerHero() {
+  document.querySelector('.brand-letters').classList.add('animate');
+  document.querySelector('.tagline').classList.add('animate');
+  document.querySelector('.hero-btns').classList.add('animate');
+}
+
+// --- Navbar solid on scroll ---
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+// --- Mobile menu ---
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('hidden');
+}));
+
+// --- Reveal on scroll (IntersectionObserver) ---
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el => io.observe(el));
+
+// --- About lines reveal ---
+const aboutLinesEl = document.getElementById('aboutLines');
+CONFIG.aboutLines.forEach((line, i) => {
+  const d = document.createElement('div');
+  d.className = 'line';
+  d.style.transitionDelay = (i * 0.18) + 's';
+  d.textContent = line;
+  aboutLinesEl.appendChild(d);
+});
+const aboutObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.line').forEach(l => l.classList.add('in'));
+      aboutObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+aboutObs.observe(aboutLinesEl);
+
+// --- Services render ---
+const servicesGrid = document.getElementById('servicesGrid');
+CONFIG.services.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'service-card bg-white rounded-2xl p-6 text-center reveal';
+  card.innerHTML = `<div class="w-14 h-14 mx-auto mb-4 rounded-full bg-blush flex items-center justify-center icon-glow">${s.icon}</div><h3 class="serif text-xl mb-2">${s.title}</h3><p class="text-sm" style="color:var(--muted)">${s.desc}</p>`;
+  servicesGrid.appendChild(card);
+});
+servicesGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// --- Boutique render ---
+const track = document.getElementById('boutiqueTrack');
+CONFIG.boutique.forEach(b => {
+  const card = document.createElement('div');
+  card.className = 'boutique-card';
+  card.innerHTML = `<img src="${b.img}" alt="${b.name}" loading="lazy" onerror="this.style.display='none'"><div class="info"><div class="font-semibold">${b.name}</div><div class="text-gold text-sm mt-1">${b.price}</div></div>`;
+  track.appendChild(card);
+});
+
+// --- Before/After slider ---
+const ba = document.getElementById('baContainer');
+const baBefore = ba.querySelector('.ba-before');
+const baHandle = ba.querySelector('.ba-handle');
+let dragging = false;
+function setBaPos(clientX) {
+  const rect = ba.getBoundingClientRect();
+  let pct = (clientX - rect.left) / rect.width;
+  pct = Math.max(0.02, Math.min(0.98, pct));
+  baBefore.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
+  baHandle.style.left = (pct * 100) + '%';
+}
+ba.addEventListener('mousedown', e => { dragging = true; setBaPos(e.clientX); });
+window.addEventListener('mousemove', e => { if (dragging) setBaPos(e.clientX); });
+window.addEventListener('mouseup', () => dragging = false);
+ba.addEventListener('touchstart', e => { dragging = true; setBaPos(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('touchmove', e => { if (dragging) setBaPos(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('touchend', () => dragging = false);
+
+// --- Testimonials carousel ---
+const testiWrap = document.getElementById('testiWrap');
+const testiDots = document.getElementById('testiDots');
+CONFIG.testimonials.forEach((t, i) => {
+  const div = document.createElement('div');
+  div.className = 'testi' + (i === 0 ? ' active' : '');
+  div.innerHTML = `<p class="text-xl md:text-2xl italic serif mb-6">"${t.text}"</p><div class="font-semibold">${t.name}</div><div class="text-sm" style="color:var(--muted)">${t.role}</div>`;
+  testiWrap.appendChild(div);
+  const dot = document.createElement('div');
+  dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToTesti(i));
+  testiDots.appendChild(dot);
+});
+let testiIndex = 0;
+function goToTesti(i) {
+  const items = testiWrap.querySelectorAll('.testi');
+  const dots = testiDots.querySelectorAll('.testi-dot');
+  items[testiIndex].classList.remove('active');
+  dots[testiIndex].classList.remove('active');
+  testiIndex = i;
+  items[testiIndex].classList.add('active');
+  dots[testiIndex].classList.add('active');
+}
+let testiTimer = null;
+if (!reduceMotion) {
+  testiTimer = setInterval(() => goToTesti((testiIndex + 1) % CONFIG.testimonials.length), 5000);
+}
+
+// --- Packages render ---
+const packagesGrid = document.getElementById('packagesGrid');
+CONFIG.packages.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'pkg-card' + (p.highlight ? ' highlight' : '');
+  card.innerHTML = (p.highlight ? '<div class="badge">MOST POPULAR</div>' : '') +
+    `<h3 class="serif text-2xl mb-2">${p.name}</h3>` +
+    `<div class="text-4xl font-semibold mb-6" style="color:var(--burgundy)">${p.price}</div>` +
+    `<ul class="space-y-2 text-sm mb-8" style="color:var(--muted)">${p.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul>` +
+    `<a href="#contact" class="btn btn-gold w-full">Choose</a>`;
+  packagesGrid.appendChild(card);
+});
+
+// --- Contact form service options ---
+const serviceSelect = document.querySelector('#bookingForm select[name="service"]');
+CONFIG.services.forEach(s => {
+  const opt = document.createElement('option');
+  opt.value = s.title;
+  opt.textContent = s.title;
+  serviceSelect.appendChild(opt);
+});
+
+// --- Booking form -> WhatsApp ---
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const name = encodeURIComponent(f.name.value.trim());
+  const service = encodeURIComponent(f.service.value);
+  const date = encodeURIComponent(f.date.value);
+  const message = encodeURIComponent(f.message.value.trim());
+  const text = `Hello Chanda's Classic Boutique & Salon!%0A%0AName: ${name}%0AService: ${service}%0APreferred Date: ${date}%0AMessage: ${message}`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${text}`, '_blank');
+});
+
+// --- Custom gold cursor (desktop) ---
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px'; }, { passive: true });
+  (function animCursor() {
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    cursorRing.style.left = rx + 'px';
+    cursorRing.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+  document.querySelectorAll('a,button,.service-card,.boutique-card,.pkg-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+  });
+} else {
+  cursorDot.style.display = 'none';
+  cursorRing.style.display = 'none';
+}
+
+// --- Gold sparkle particles in hero ---
+const particlesEl = document.getElementById('particles');
+if (!reduceMotion) {
+  for (let i = 0; i < 34; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.bottom = (Math.random() * 25) + '%';
+    p.style.animationDuration = (7 + Math.random() * 9) + 's';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    particlesEl.appendChild(p);
+  }
+}
+
+// --- Parallax ---
+const parallaxEls = document.querySelectorAll('.parallax');
+if (!reduceMotion && parallaxEls.length) {
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        parallaxEls.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+          el.style.transform = `translateY(${center * 0.12}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+// --- Lazy image fade-in (optional polish) ---
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  img.style.opacity = '0';
+  img.style.transition = 'opacity .6s ease';
+  const show = () => { img.style.opacity = '1'; };
+  if (img.complete) show(); else img.addEventListener('load', show);
+});
+
+// --- If reduced motion, trigger hero immediately ---
+if (reduceMotion) {
+  setTimeout(triggerHero, 100);
+}
+</script>
+</body>
+</html>
